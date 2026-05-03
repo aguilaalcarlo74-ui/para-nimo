@@ -1,0 +1,12 @@
+/* HEARTBEAT EFFECT ON DOOR OPEN */
+.heartbeat {
+    animation: heartbeat 0.6s ease;
+}
+
+@keyframes heartbeat {
+    0% { transform: scale(1) rotateY(0deg); }
+    25% { transform: scale(1.05) rotateY(0deg); }
+    50% { transform: scale(0.98) rotateY(0deg); }
+    75% { transform: scale(1.08) rotateY(0deg); }
+    100% { transform: scale(1) rotateY(0deg); }
+}

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Secret Page</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* smoother live pink background */
+    background: linear-gradient(-45deg, #ff4fa3, #ffb6c1, #ff2e88, #ff8dc7);
+    background-size: 400% 400%;
+    animation: bgFlow 8s ease infinite;
+}
+
+/* background animation */
+@keyframes bgFlow {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+}
+
+/* login box animation */
+.box {
+    text-align: center;
+    background: rgba(255,255,255,0.25);
+    padding: 25px;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    animation: popIn 1s ease;
+}
+
+@keyframes popIn {
+    0% {transform: scale(0.5); opacity: 0;}
+    100% {transform: scale(1); opacity: 1;}
+}
+
+input {
+    padding: 10px;
+    font-size: 18px;
+    border: none;
+    border-radius: 10px;
+    text-align: center;
+    outline: none;
+}
+
+button {
+    margin-top: 10px;
+    padding: 10px 25px;
+    border: none;
+    border-radius: 10px;
+    background: white;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: scale(1.1);
+}
+
+/* error shake animation */
+#error {
+    color: red;
+    font-weight: bold;
+    margin-top: 10px;
+    animation: shake 0.3s;
+}
+
+@keyframes shake {
+    0% {transform: translateX(0);}
+    25% {transform: translateX(-5px);}
+    50% {transform: translateX(5px);}
+    100% {transform: translateX(0);}
+}
+
+/* paper reveal animation */
+#paper {
+    display: none;
+    width: 50%;
+    height: 50%;
+    background: #fff0f5;
+    border-radius: 20px;
+    padding: 20px;
+    overflow-y: scroll;
+    white-space: pre-wrap;
+    box-shadow: 0 0 25px rgba(0,0,0,0.2);
+
+    animation: fadeUp 1s ease;
+}
+
+@keyframes fadeUp {
+    0% {opacity: 0; transform: translateY(40px) scale(0.95);}
+    100% {opacity: 1; transform: translateY(0) scale(1);}
+}
+</style>
+</head>
+
+<body>
+
+<div class="box" id="loginBox">
+    <h2>Enter Passcode</h2>
+    <input type="password" id="codeInput" placeholder="Enter code">
+    <br>
+    <button onclick="checkCode()">Enter</button>
+    <div id="error"></div>
+</div>
+
+<div id="paper"></div>
+
+<script>
+function checkCode() {
+    let code = document.getElementById("codeInput").value;
+
+    if (code === "0221") {
+        document.getElementById("loginBox").style.display = "none";
+        let paper = document.getElementById("paper");
+        paper.style.display = "block";
+
+        paper.innerText =
+` Hi Rodelyn
+    
+    Gi buhat nako ni na message kay gina clarify nako na dili najud ko maki ano na ulit kay lain kaayo sa part na maging second option kay you know naa man jud kay uyab man jud nya dili nako gusto sabayon mi nimo kay dapat mas priority nimo siya jud ayaw ko sabaya ana kay lain kaayo kung i sabay kaya naka isip ko na ako nalang mag iwas dili nalang ko makig interact nimo kay ako naa man koy uyab man pud sa iyaha man pud nako ma buhos tanan time nako niya wala nakoy makig chat pa nimo kay wala koy time na og stop nag sending og risk kaayo balo naman kos imoha dili nako gusto na stop na dili najud nako kaya rodz dili najud pa ulaw ulaw rako kay ako dili ko mag chat nimo kay plano nako respect nalang jud sa isa jud kay dili nako gusto na makig argue ana og akung uyab dili pud siya ganahan na naa pay connection or contact sa mga past dapat maka sabot ka ana oky lang send send lang pero dili nako replyan kay lisod na i unblock tika didto sa fb kaya wait ra mao rana unta akung ma ano sa imoha rod oky nako og unta ikaw oky naka dili na nako na naa pay ma sakitan sa atoa duha jud maong sorry kaayo kung ani nako hadlok rako na masuko siya nako maong sorry kaayo rod i unblovk ra tika didto ingat ka always ayaw pa gutom og maayo tulog biskan ginagmay ra mao rana salamat sa pag intindi...
+    
+    
+    
+    
+
+`;
+    } 
+    else {
+        let error = document.getElementById("error");
+        error.innerText = "ERROR ❌ Wrong Passcode";
+
+        // restart animation trick
+        error.style.animation = "none";
+        setTimeout(() => {
+            error.style.animation = "shake 0.3s";
+        }, 10);
+    }
+}
+</script>
+
+</body>
+</html>
